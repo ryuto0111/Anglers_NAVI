@@ -1,24 +1,31 @@
-# README
+# Angler's NAVI
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+釣りを始めたいと思っている人がゲーム感覚の実績解除や先人からのアドバイスを通して釣りについて学ぶことが出来るサイト
 
-Things you may want to cover:
+### テーマを選んだ理由
+私は釣りが好きでよく行くのですが、釣りをしているとおそらく初めて釣りに来たという人が仕掛けや釣り方に苦戦している様子をよく見かけます。
+また毒をもつ魚や危険な行為に気づかないことが多々あるので、初めて釣りをする方が身近に詳しい人がいなくても正しい知識を身に付けられるサービスがあれば便利だと考えました。
 
-* Ruby version
+### ターゲットユーザ
+- これから釣りを始めたいと考えている人
+- 初心者を応援したい人
 
-* System dependencies
+### 主な利用シーン
+- 釣りについて知りたい時
+- 自分の持つ知識を共有したい時
 
-* Configuration
+## 設計書
+　後ほど作成予定
 
-* Database creation
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
+<!--- フリー素材として以下を使用-->
+<!--  - Unsplash(https://unsplash.com/ja)-->
