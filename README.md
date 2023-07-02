@@ -1,4 +1,4 @@
-# Angler's NAVI
+# Anglers NAVI
 
 ## サイト概要
 ### サイトテーマ
