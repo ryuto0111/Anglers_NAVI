@@ -14,7 +14,7 @@
             <div>
               <div class="navbar-nav">
                 <% if admin_signed_in? %>
-                  <li><%= link_to "会員一覧", admin_users_path, class: 'btn navbar-btn btn-outline-light ml-3'%></li>
+                  <li><%= link_to "ユーザー一覧", admin_users_path, class: 'btn navbar-btn btn-outline-light ml-3'%></li>
                   <li><%= link_to "タグ一覧", admin_tags_path, class: 'btn navbar-btn btn-outline-light ml-3'%></li>
                   <li>
                     <%= link_to destroy_admin_session_path, method: :delete, class: 'btn navbar-btn btn-outline-light ml-3' do %>
@@ -22,7 +22,7 @@
                     <% end %>
                   </li>
                 <% elsif user_signed_in? %>
-                  <li><%= link_to "マイページ", user_path, class: 'btn navbar-btn btn-outline-light ml-5' %></li>
+                  <li><%= link_to "マイページ", user_path(current_user), class: 'btn navbar-btn btn-outline-light ml-5' %></li>
                   <li><%= link_to "投稿一覧", posts_path, class: 'btn navbar-btn btn-outline-light ml-3' %></li>
                   <li>
                     <%= link_to destroy_user_session_path, method: :delete, class: 'btn navbar-btn btn-outline-light ml-3' do %>
