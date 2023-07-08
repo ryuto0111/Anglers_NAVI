@@ -31,7 +31,12 @@ Rails.application.routes.draw do
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
     end
+  end
 
+  namespace :admin do
+    get '/' => 'homes#top'
+    resources :tags, only: [:index, :create, :edit, :update, :delete]
+    resources :users, only: [:index, :show, :edit, :update]
   end
 
 end
