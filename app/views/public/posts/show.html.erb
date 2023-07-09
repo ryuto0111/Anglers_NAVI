@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <% if @post.post_image.attached? %>
+        <% @post.post_image.each do |post_image| %>
+          <%= image_tag @post_image.variant(resize: '300x300') %>
+        <% end %>
+      <% end %>
+      <%= @post.title %>
+      <%= @post.body %>
+      <%= @post.tags %>
+    </div>
+  </div>
+</div>
