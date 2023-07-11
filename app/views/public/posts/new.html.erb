@@ -2,11 +2,11 @@
   <div class="row">
     <h5>新規投稿作成</h5>
     <div class="col-md-10">
-      <%= form_with model:@post, local:true do |f| %>
       <table class="table table-borderless">
+      <%= form_with model: @post, local:true do |f| %>
         <tr class="field">
           <td><%= f.label :post_image, "投稿画像" %></td>
-          <td><%= f.file_field :post_images, direct_upload: true, multiple: true %></td>
+          <td><%= f.file_field :post_images, multiple: true %></td>
         </tr>
         <tr class="form-group">
           <td><%= f.label :title, "タイトル" %></td>
@@ -30,8 +30,8 @@
           <td></td>
           <td><%= f.submit "投稿", class: "btn btn-success" %></td>
         </tr>
-      </table>
       <% end %>
+      </table>
     </div>
   </div>
 </div>
