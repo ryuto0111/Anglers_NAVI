@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
+    <%= link_to "新規投稿", new_post_path  %>
     <div class="col-md-10">
-      <h2>投稿一覧(全<%= @post_all.count %>件)</h2>
+      <h2>投稿一覧(全<%= @posts.count %>件)</h2>
         <% @posts.each do |post| %>
           <% if post.post_image.attached? %>
             <% post.post_image.each do |post_image| %>
@@ -10,7 +11,7 @@
           <% end %>
           <%= post.title %>
           <%= post.body %>
-          <%= post.tags %>
+          <%#= post.tags %>
         <% end %>
     </div>
   </div>
