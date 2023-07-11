@@ -1,10 +1,15 @@
-<table class="table">
-  <tbody>
-      <% post.post_comments.each do |post_comment| %>
-      <tr>
-        <td><%= post_comment.user.name %></td>
-        <td><%= post_comment.comment_content %></td>
-      </tr>
-      <% end %>
-  </tbody>
-</table>
+<% post.post_comments.each do |post_comment| %>
+  <table class="table">
+    <tbody>
+        <tr>
+          <td><%= post_comment.user.name %></td>
+          <td><%= post_comment.comment_content %></td>
+          <td>
+            <% if post_comment.user == current_user %>
+              <%= link_to "削除", post_post_comment_path(post, post_comment), method: :delete, class: "btn btn-danger", local:false %>
+            <% end %>
+          </td>
+        </tr>
+    </tbody>
+  </table>
+<% end %>
