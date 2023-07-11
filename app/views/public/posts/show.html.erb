@@ -27,6 +27,10 @@
           </td>
         </tr>
       </table>
+      <div id="post-comments-index">
+        <%= render 'public/post_comments/index', post: @post %>
+        <%= render 'public/post_comments/form', post: @post, post_comment: @post_comment %>
+      </div>
     </div>
   </div>
 </div>
