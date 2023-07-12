@@ -25,6 +25,9 @@
               <%= tag.name %>
             <% end %>
           </td>
+          <td id="favorite" >
+            <%= render 'public/favorites/btn', post: @post %>
+          </td>
         </tr>
       </table>
       <div id="comment_index">
