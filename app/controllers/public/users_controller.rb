@@ -8,8 +8,8 @@ class Public::UsersController < ApplicationController
       @current_entry.each do |current|
         @another_entry.each do |another|
           if current.room_id == another.room_id
-            @isRoom = true
-            @roomId = current.room_id
+            @is_room = true
+            @room_id = current.room_id
           end
         end
       end
