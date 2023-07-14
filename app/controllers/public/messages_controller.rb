@@ -1,19 +1,18 @@
 class Public::MessagesController < ApplicationController
-  before_action :authenticate_user!, only: [:create]
+  before_action :authenticate_user!
 
   def create
-    if Entry.where(user_id: current_user.id, room_id: params[:message][:room_id]).present?
-      @message = Message.create(message_params)
-      # @message.save
+    message = current_user.messages.new(message_params)
+    if message.save
+      redirect_to room_path(message.room)
     else
-      flash[:alert] = "メッセージ送信に失敗しました。"
+      redirect_back(fallback_location: root_path)
     end
-    redirect_to request.referer
   end
 
   private
 
   def message_params
-    params.require(:message).permit(:user_id, :body, :room_id)
+    params.require(:message).permit(:room_id, :body)
   end
 end
