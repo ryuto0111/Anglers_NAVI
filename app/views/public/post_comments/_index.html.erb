@@ -2,7 +2,11 @@
   <table class="table">
     <tbody>
         <tr>
-          <td><%= post_comment.user.name %></td>
+          <td>
+            <%= link_to user_path(post_comment.user) do %>
+              <%= post_comment.user.name %>
+            <% end %>
+            </td>
           <td><%= post_comment.comment_content %></td>
           <td>
             <% if post_comment.user == current_user %>
