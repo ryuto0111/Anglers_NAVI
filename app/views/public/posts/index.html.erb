@@ -3,23 +3,25 @@
   <%= link_to "新規投稿", new_post_path  %>
   <div class="row">
     <% @posts.each do |post| %>
-    <div class="card mx-1">
+    <div class="card mx-1 p-1">
       <% if post.post_images.attached? %>
-        <% post.post_images.each do |post_image| %>
-          <%= link_to post_path(post) do %>
-            <%= image_tag post_image.variant(resize_to_fill: [200, 200]).processed %>
-          <% end %>
+        <%= link_to post_path(post) do %>
+          <%= image_tag post.post_images[0].variant(resize_to_fill: [200, 200]).processed %>
         <% end %>
       <% end %>
       <h6 class="cart-title"><%= post.title %></h6>
       <p class="card-text"><%= post.body %></p>
-      <% post.tags.each do |tag| %>
-        #<%= tag.name %>
-      <% end %>
-      <b>投稿者</b>
-      <%= link_to user_path(post.user) do %>
-        <span class="text-right"><%= post.user.name %></span>
-      <% end %>
+      <p>
+        <% post.tags.each do |tag| %>
+          #<%= tag.name %>
+        <% end %>
+      </p>
+      <p>
+        <b>投稿者</b>
+        <%= link_to user_path(post.user) do %>
+          <span class="text-right"><%= post.user.name %></span>
+        <% end %>
+      </p>
     </div>
     <% end %>
   </div>
