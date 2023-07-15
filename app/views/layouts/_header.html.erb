@@ -9,33 +9,28 @@
       <div>
         <ul class="ml-auto mb-0">
           <div class="navbar-nav ml-auto">
-            <div class="d-flex align-items-center">
-            </div>
-            <div>
-              <div class="navbar-nav">
-                <% if admin_signed_in? %>
-                  <li><%= link_to "ユーザー一覧", admin_users_path, class: 'btn navbar-btn btn-outline-light ml-3'%></li>
-                  <li><%= link_to "タグ一覧", admin_tags_path, class: 'btn navbar-btn btn-outline-light ml-3'%></li>
-                  <li>
-                    <%= link_to destroy_admin_session_path, method: :delete, class: 'btn navbar-btn btn-outline-light ml-3' do %>
-                      ログアウト
-                    <% end %>
-                  </li>
-                <% elsif user_signed_in? %>
-                  <li><%= link_to "マイページ", user_path(current_user), class: 'btn navbar-btn btn-outline-light ml-5' %></li>
-                  <li><%= link_to "投稿一覧", posts_path, class: 'btn navbar-btn btn-outline-light ml-3' %></li>
-                  <li>
-                    <%= link_to destroy_user_session_path, method: :delete, class: 'btn navbar-btn btn-outline-light ml-3' do %>
-                      ログアウト
-                    <% end %>
-                  </li>
-                <% else %>
-                  <li><%= link_to "About", about_path, class: 'btn navbar-btn' %></li>
-                  <li><%= link_to "新規登録",new_user_registration_path , class: 'btn navbar-btn ml-3' %></li>
-                  <li><%= link_to "ログイン", new_user_session_path , class: 'btn navbar-btn ml-3' %></li>
-                <% end %>
-              </div>
-              </div>
+            <div class="navbar-nav">
+              <% if admin_signed_in? %>
+                <li><%= link_to "ユーザー一覧", admin_users_path, class: 'btn navbar-btn btn-outline-light ml-3'%></li>
+                <li><%= link_to "タグ一覧", admin_tags_path, class: 'btn navbar-btn btn-outline-light ml-3'%></li>
+                <li>
+                  <%= link_to destroy_admin_session_path, method: :delete, class: 'btn navbar-btn btn-outline-light ml-3' do %>
+                    ログアウト
+                  <% end %>
+                </li>
+              <% elsif user_signed_in? %>
+                <li><%= link_to "マイページ", user_path(current_user), class: 'btn navbar-btn btn-outline-light ml-5' %></li>
+                <li><%= link_to "投稿一覧", posts_path, class: 'btn navbar-btn btn-outline-light ml-3' %></li>
+                <li>
+                  <%= link_to destroy_user_session_path, method: :delete, class: 'btn navbar-btn btn-outline-light ml-3' do %>
+                    ログアウト
+                  <% end %>
+                </li>
+              <% else %>
+                <li><%= link_to "About", about_path, class: 'btn navbar-btn' %></li>
+                <li><%= link_to "新規登録",new_user_registration_path , class: 'btn navbar-btn ml-3' %></li>
+                <li><%= link_to "ログイン", new_user_session_path , class: 'btn navbar-btn ml-3' %></li>
+              <% end %>
             </div>
           </div>
         </ul>
