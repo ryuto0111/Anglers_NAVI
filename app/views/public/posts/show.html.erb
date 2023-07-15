@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <table class="table table-sm table-borderless">
+        <tr>
+          <td>
+            <% if @post.post_images.attached? %>
+              <% @post.post_images.each do |post_image| %>
+                <%= link_to post_path(@post) do %>
+                  <%= image_tag post_image.variant(resize_to_fill: [200, 200]).processed %>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td id="favorite" >
+            <% if @post.user == current_user %>
+              <%= link_to "削除", post_path(@post), method: :DELETE, class: "btn btn-danger" %>
+            <% else %>
+              <%= render 'public/favorites/btn', post: @post %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= link_to user_path(@post.user) do %>
+              <%= @post.user.name %>
+            <% end %>
+            </td>
+        </tr>
+        <tr>
+          <td><%= @post.title %></td>
+        </tr>
+        <tr>
+          <td><%= @post.body %></td>
+        </tr>
+        <tr>
+          <td>
+            <% @post.tags.each do |tag| %>
+              <%= tag.name %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+      <div id="comment_index">
+        <%= render '/public/post_comments/index', post: @post %>
+      </div>
+        <%= render '/public/post_comments/form', post: @post, post_comment: @post_comment %>
+    </div>
+  </div>
+</div>

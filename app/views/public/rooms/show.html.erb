@@ -1,0 +1,18 @@
+<h1>さんとのチャット</h1>
+
+<div class="message" style="width: 400px;">
+  <% @messages.each do |message| %>
+    <% if message.user_id == current_user.id %>
+      <p style="text-align: right;"><%= message.body %></p>
+    <% else %>
+      <p style="text-align: left;"><%= message.body %></p>
+    <% end %>
+  <% end %>
+</div>
+
+
+<%= form_with model: Message do |f| %>
+  <%= f.text_field :body %>
+  <%= f.hidden_field :room_id, value: @room.id %>
+  <%= f.submit "送信", class:"btn btn-primary" %>
+<% end %>

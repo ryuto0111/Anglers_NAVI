@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+    <h5>新規投稿作成</h5>
+    <div class="col-md-10">
+      <%= form_with model: @post, local:true do |f| %>
+      <table class="table table-borderless">
+        <tr class="field">
+          <td><%= f.label :post_image, "投稿画像" %></td>
+          <td><%= f.file_field :post_images, multiple: true %></td>
+        </tr>
+        <tr class="form-group">
+          <td><%= f.label :title, "タイトル" %></td>
+          <td><%= f.text_field :title, placeholder: "タイトルを入力してください", class: "form-control" %></td>
+        </tr>
+        <tr class="form-group">
+          <td><%= f.label :body, "本文" %></td>
+          <td><%= f.text_area :body, placeholder: "投稿内容を入力してください", class: "form-control" %></td>
+        </tr>
+        <tr class="form-group">
+          <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+            <div class='form-check'>
+                <%= tag.label class: 'form-check-label' do %>
+                  <%= tag.check_box %>
+                  <%= tag.text %>
+                <% end %>
+            </div>
+          <% end %>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= f.submit "投稿", class: "btn btn-success" %></td>
+        </tr>
+      </table>
+      <% end %>
+    </div>
+  </div>
+</div>

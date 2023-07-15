@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row py-3">
+    <h4 class="col-md-2">ユーザー情報</h4>
+    <% if @user == current_user %>
+      <%= link_to "編集する", edit_user_path, class:"btn btn-success btn-md" %>
+    <% else %>
+      <% if current_user.following?(@user) %>
+        <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete %>
+      <% else %>
+        <%= link_to "フォローする", user_relationships_path(@user.id), method: :post %>
+      <% end %>
+    <% end %>
+  </div>
+  <div>
+    <% unless @user.id == current_user.id %>
+      <% if (current_user.following? @user) && (@user.following? current_user)  %>
+        <% if @is_room == true %>
+          <p class="user-show-room"><a href="/rooms/<%= @room_id %>" class="btn btn-primary btn-lg">チャットへ</a>
+        <% else %>
+          <%= form_for @room do |f| %>
+            <%= fields_for @entry do |e| %>
+              <%= e.hidden_field :user_id, value: @user.id %>
+            <% end %>
+            <%= f.submit "チャットを始める", class:"btn btn-primary btn-lg user-show-chat"%>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <table class="table table-bordered">
+        <tr>
+          <td class="col-md-3 bg-light">氏名</td>
+          <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <td class="bg-light">自己紹介</td>
+          <td><%= @user.introduction %></td>
+        </tr>
+        <tr>
+          <td class="bg-light">メールアドレス</td>
+          <td><%= @user.email %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
