@@ -12,7 +12,13 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <main>
+    <div class="ml-5 mt-3 text-info">
+      <p id="notice"><%= notice %></p>
+    </div>
+    <div class="ml-5 mt-3 text-danger">
+      <p class="alert"><%= alert %></p>
+    </div>
+    <main style="height: 80vh;">
       <%= yield %>
     </main>
     <%= render 'layouts/footer' %>
