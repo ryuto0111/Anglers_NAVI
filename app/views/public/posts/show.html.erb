@@ -14,6 +14,15 @@
           </td>
         </tr>
         <tr>
+          <td id="favorite" >
+            <% if @post.user == current_user %>
+              <%= link_to "削除", post_path(@post), method: :DELETE, class: "btn btn-danger" %>
+            <% else %>
+              <%= render 'public/favorites/btn', post: @post %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
           <td>
             <%= link_to user_path(@post.user) do %>
               <%= @post.user.name %>
@@ -31,9 +40,6 @@
             <% @post.tags.each do |tag| %>
               <%= tag.name %>
             <% end %>
-          </td>
-          <td id="favorite" >
-            <%= render 'public/favorites/btn', post: @post %>
           </td>
         </tr>
       </table>
