@@ -9,7 +9,7 @@
           <%= image_tag post.post_images[0].variant(resize_to_fill: [200, 200]).processed %>
         <% end %>
       <% end %>
-      <h6 class="cart-title"><%= post.title %></h6>
+      <h6 class="card-title"><%= post.title %></h6>
       <p class="card-text"><%= post.body %></p>
       <p>
         <% post.tags.each do |tag| %>
