@@ -28,21 +28,41 @@
     <% end %>
   </div>
   <div class="row">
-    <div class="col-md-8">
-      <table class="table table-bordered">
-        <tr>
-          <td class="col-md-3 bg-light">氏名</td>
-          <td><%= @user.name %></td>
-        </tr>
-        <tr>
-          <td class="bg-light">自己紹介</td>
-          <td><%= @user.introduction %></td>
-        </tr>
-        <tr>
-          <td class="bg-light">メールアドレス</td>
-          <td><%= @user.email %></td>
-        </tr>
-      </table>
+    <div class="col-md-6 d-flex">
+      <div class="user-profile_image">
+        <%= image_tag @user.get_profile_image, size: "80x80", class: "rounded-circle" %>
+      </div>
+      <div class="user-profile">
+        <h3 class="offset-1"><%= @user.name %></h3>
+        <P class="">フォロー<%= @user.followings.count %>　フォロワー<%= @user.followers.count %></P>
+      </div>
+      <div class="col-md-6 introduction">
+        <%= @user.introduction %>
+      </div>
     </div>
+  </div>
+  <div class="row d-flex col-md-8 justify-content-around">
+    <% @user.posts.each do |post| %>
+    <div class="card p-2">
+      <% if post.post_images.attached? %>
+        <%= link_to post_path(post) do %>
+          <%= image_tag post.post_images[0].variant(resize_to_fill: [200, 200]).processed %>
+        <% end %>
+      <% end %>
+      <h6 class="card-title"><%= post.title %></h6>
+      <p class="card-text"><%= post.body %></p>
+      <p>
+        <% post.tags.each do |tag| %>
+          #<%= tag.name %>
+        <% end %>
+      </p>
+      <p>
+        <span><i class="fas fa-user"></i></span>
+        <%= link_to user_path(post.user) do %>
+          <span class="text-right"><%= post.user.name %></span>
+        <% end %>
+      </p>
+    </div>
+    <% end %>
   </div>
 </div>
