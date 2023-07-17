@@ -19,7 +19,7 @@ Rails.application.routes.draw do
       resources :post_comments, only: [:create, :destroy]
       resource  :favorites,     only: [:create, :destroy]
     end
-    resources :tags, only: [:show]
+    resources :tagsearches, only: [:show]
 
     resources :messages, only: [:create]
     resources :rooms, only: [:create, :index, :show]
