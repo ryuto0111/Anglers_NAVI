@@ -1,0 +1,7 @@
+<div class="sidebar">
+  <% @tags.each do |tag| %>
+    <%= link_to tagsearch_path(tag) do %>
+      <%= tag.name %></br>
+    <% end %>
+  <% end %>
+</div>

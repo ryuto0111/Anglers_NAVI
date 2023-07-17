@@ -1,30 +1,39 @@
 <div class="container">
-  <h2>投稿一覧(全<%= @posts.count %>件)</h2>
   <%= link_to "新規投稿", new_post_path  %>
   <div class="row">
-    <% @posts.each do |post| %>
-    <div class="card mx-1 p-1">
-      <% if post.post_images.attached? %>
-        <%= link_to post_path(post) do %>
-          <%= image_tag post.post_images[0].variant(resize_to_fill: [200, 200]).processed %>
-        <% end %>
-      <% end %>
-      <h6 class="card-title"><%= post.title %></h6>
-      <p class="card-text"><%= post.body %></p>
-      <p>
-        <% post.tags.each do |tag| %>
-          <%= link_to tagsearch_path(tag) do %>
-            #<%= tag.name %>
-          <% end %>
-        <% end %>
-      </p>
-      <p>
-        <span><i class="fas fa-user"></i></span>
-        <%= link_to user_path(post.user) do %>
-          <span class="text-right"><%= post.user.name %></span>
-        <% end %>
-      </p>
+    <div class="col-md-2">
+      <%= render 'public/tagsearches/sidebar' %>
     </div>
-    <% end %>
+    <div class="col-md-8">
+      <h2>投稿一覧(全<%= @posts.count %>件)</h2>
+      <div class="d-flex">
+        <% @posts.each do |post| %>
+        <div class="card col-md-4 m-2 p-0">
+          <% if post.post_images.attached? %>
+            <%= link_to post_path(post) do %>
+              <%= image_tag post.post_images[0].variant(resize_to_fill: [240, 200]).processed, class:"pt-1 px-1" %>
+            <% end %>
+          <% end %>
+          <div class="card-content px-2">
+            <h6><%= post.title %></h6>
+            <p><%= post.body %></p>
+            <p>
+              <% post.tags.each do |tag| %>
+                <%= link_to tagsearch_path(tag) do %>
+                  #<%= tag.name %>
+                <% end %>
+              <% end %>
+            </p>
+            <p>
+              <span><i class="fas fa-user"></i></span>
+              <%= link_to user_path(post.user) do %>
+                <span class="text-right"><%= post.user.name %></span>
+              <% end %>
+            </p>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
