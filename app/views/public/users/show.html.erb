@@ -35,10 +35,10 @@
       <div class="user-profile">
         <h3 class="offset-1"><%= @user.name %></h3>
         <P class="">
-          <%= link_to user_followers_path(@user) do %>
+          <%= link_to user_followings_path(@user) do %>
             フォロー<%= @user.followings.count %>
           <% end %>
-          <%= link_to user_followings_path(@user) do %>
+          <%= link_to user_followers_path(@user) do %>
             フォロワー<%= @user.followers.count %></P>
           <% end %>
       </div>
