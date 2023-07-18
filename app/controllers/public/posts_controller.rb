@@ -3,6 +3,7 @@ class Public::PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @tags = Tag.where(params[:id])
   end
 
   def show
