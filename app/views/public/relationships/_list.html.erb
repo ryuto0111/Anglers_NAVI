@@ -1,7 +1,7 @@
 <% if users.exists? %>
   <% users.each do |user| %>
     <div class="card d-flex">
-      <div class="flex">
+      <div class="d-flex">
         <%= link_to user_path(user) do %>
           <%= image_tag user.get_profile_image, size:"80x80", class: "rounded-circle" %>
           <p><%= user.name %></p>
