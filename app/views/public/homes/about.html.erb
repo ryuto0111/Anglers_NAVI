@@ -1,11 +1,19 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8">
+    <div class="mx-auto text-center">
       <h1>Anglers_NAVIとは</h1>
       <p>
         Anglres_NAVIは釣りを始めようとしている方<br>
-        始めたばかりの方を応援します。
+        始めたばかりの方へのサポートを目的としたアプリケーションです。
       </p>
+      <h4>
+        新規登録はこちら<br>
+        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary" %>
+      </h4>
+      <h4 class="mt-3">
+        登録済みの方はこちら<br>
+        <%= link_to "ログイン", user_session_path, class: "btn btn-primary" %>
+      </h4>
     </div>
   </div>
 </div>
