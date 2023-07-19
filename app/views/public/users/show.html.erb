@@ -1,15 +1,6 @@
 <div class="container">
   <div class="row py-3">
-    <h4 class="col-md-2">ユーザー情報</h4>
-    <% if @user == current_user %>
-      <%= link_to "編集する", edit_user_path, class:"btn btn-success btn-md" %>
-    <% else %>
-      <% if current_user.following?(@user) %>
-        <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete %>
-      <% else %>
-        <%= link_to "フォローする", user_relationships_path(@user.id), method: :post %>
-      <% end %>
-    <% end %>
+    <h4 class="col-md-2 offset-4">ユーザー情報</h4>
   </div>
   <div>
     <% unless @user.id == current_user.id %>
@@ -28,23 +19,37 @@
     <% end %>
   </div>
   <div class="row">
-    <div class="col-md-6 d-flex">
+    <div class="col-md-6 d-flex mx-auto">
       <div class="user-profile_image">
         <%= image_tag @user.get_profile_image, size: "80x80", class: "rounded-circle" %>
       </div>
-      <div class="user-profile">
+      <div class="user-profile ml-2">
         <h3 class="offset-1"><%= @user.name %></h3>
-        <P class="">
+        <P>
           <%= link_to user_followings_path(@user) do %>
             フォロー<%= @user.followings.count %>
           <% end %>
           <%= link_to user_followers_path(@user) do %>
-            フォロワー<%= @user.followers.count %></P>
+            <span class="ml-2">フォロワー<%= @user.followers.count %></span>
           <% end %>
+        </P>
       </div>
-      <div class="row introduction">
-        <%= @user.introduction %>
-      </div>
+      <span class="align-middle ml-3 mt-3">
+        <% if @user == current_user %>
+          <%= link_to "編集する", edit_user_path, class:"btn btn-success btn-md" %>
+        <% else %>
+          <% if current_user.following?(@user) %>
+            <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete %>
+          <% else %>
+            <%= link_to "フォローする", user_relationships_path(@user.id), method: :post %>
+          <% end %>
+        <% end %>
+      </span>
+    </div>
+  </div>
+  <div class="row" style="min-height: 50px;">
+    <div class="col-md-6 offset-4">
+      <p class="m-0 p-0"><%= @user.introduction %></p>
     </div>
   </div>
   <div class="row d-flex col-md-8 justify-content-around">
