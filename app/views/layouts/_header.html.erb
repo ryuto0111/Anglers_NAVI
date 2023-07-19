@@ -11,6 +11,7 @@
           <div class="navbar-nav ml-auto">
             <div class="navbar-nav">
               <% if admin_signed_in? %>
+                <li><%= link_to "投稿一覧", admin_posts_path, class: 'btn navbar-btn btn-outline-light' %></li>
                 <li><%= link_to "ユーザー一覧", admin_users_path, class: 'btn navbar-btn btn-outline-light ml-3'%></li>
                 <li><%= link_to "タグ一覧", admin_tags_path, class: 'btn navbar-btn btn-outline-light ml-3'%></li>
                 <li>

@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mx-auto">
+      <table class="table table-sm table-borderless">
+        <tr>
+          <td>
+            <% if @post.post_images.attached? %>
+              <% @post.post_images.each do |post_image| %>
+                <%= image_tag post_image.variant(resize_to_fill: [200, 200]).processed %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <%= link_to "削除", admin_post_path(@post), method: :DELETE, class: "btn btn-danger" %>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <span><i class="fas fa-user"></i></span>
+            <%= link_to admin_user_path(@post.user) do %>
+              <%= @post.user.name %>
+            <% end %>
+            </td>
+        </tr>
+        <tr>
+          <td><%= @post.title %></td>
+        </tr>
+        <tr>
+          <td><%= @post.body %></td>
+        </tr>
+        <tr>
+          <td>
+            <% @post.tags.each do |tag| %>
+              <%= tag.name %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
+      <div id="comment_index">
+        <%= render '/admin/posts_comments/index', post: @post %>
+      </div>
+    </div>
+  </div>
+</div>
