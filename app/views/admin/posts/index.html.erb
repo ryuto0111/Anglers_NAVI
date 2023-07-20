@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 d-flex flex-wrap mx-auto">
-        <h2 class="col-md-8">投稿一覧(全<%= @posts.count %>件)</h2>
+        <h2 class="col-md-8">投稿一覧</h2>
         <% @posts.each do |post| %>
         <div class="card col-md-4 m-2 p-0">
           <% if post.post_images.attached? %>
@@ -28,6 +28,11 @@
           </div>
         </div>
         <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="mx-auto mb-5">
+      <%= paginate @posts, theme: 'bootstrap-5' %>
     </div>
   </div>
 </div>

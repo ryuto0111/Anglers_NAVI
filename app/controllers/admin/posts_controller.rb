@@ -1,7 +1,7 @@
 class Admin::PostsController < ApplicationController
 
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page]).per(6)
     @tags = Tag.where(params[:id])
   end
 
