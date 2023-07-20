@@ -52,9 +52,9 @@
       <p class="m-0 p-0"><%= @user.introduction %></p>
     </div>
   </div>
-  <div class="row d-flex col-md-8 justify-content-around">
+  <div class="row d-flex col-md-10 mx-auto">
     <% @posts.each do |post| %>
-    <div class="card col-md-4 m-3 p-0">
+    <div class="card col-md-5 mx-auto mt-2 p-0">
       <% if post.post_images.attached? %>
         <%= link_to post_path(post) do %>
           <%= image_tag post.post_images[0].variant(resize_to_fill: [241, 200]).processed, style: "height: 100%; width: 100%;" %>
@@ -72,16 +72,14 @@
         </p>
         <p>
           <span><i class="fas fa-user"></i></span>
-          <%= link_to user_path(post.user) do %>
-            <span class="text-right"><%= post.user.name %></span>
-          <% end %>
+          <span class="text-right"><%= post.user.name %></span>
         </p>
       </div>
     </div>
     <% end %>
   </div>
   <div class="row">
-    <div class="mx-auto mb-5">
+    <div class="mx-auto mt-2 mb-5">
       <%= paginate @posts, theme: 'bootstrap-5' %>
     </div>
   </div>
