@@ -1,4 +1,5 @@
-<div class="sidebar">
+<div class="sidebar text-center outline-light">
+  <h4>タグ一覧</h4>
   <% @tags.each do |tag| %>
     <%= link_to tagsearch_path(tag) do %>
       <%= tag.name %></br>
