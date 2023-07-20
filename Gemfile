@@ -62,6 +62,7 @@ gem 'rails-i18n'
 gem 'devise-i18n'
 gem 'jquery-rails'
 gem 'dotenv-rails'
+gem 'bootstrap5-kaminari-views', '~> 0.0.1'
 group :production do
   gem 'mysql2'
 end
