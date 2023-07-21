@@ -2,6 +2,9 @@
   <h2><%= @tag.name %>(全<%= @posts.count %>件)</h2>
   <%= link_to "新規投稿", new_post_path  %>
   <div class="row">
+    <div class="col-md-2">
+      <%= render 'public/tagsearches/sidebar' %>
+    </div>
     <% @posts.each do |post| %>
     <div class="card mx-1 p-1">
       <% if post.post_images.attached? %>
@@ -13,7 +16,9 @@
       <p class="card-text"><%= post.body %></p>
       <p>
         <% post.tags.each do |tag| %>
-          #<%= tag.name %>
+          <%= link_to tagsearch_path(tag) do %>
+            #<%= tag.name %>
+          <% end %>
         <% end %>
       </p>
       <p>
@@ -24,5 +29,10 @@
       </p>
     </div>
     <% end %>
+  </div>
+  <div class="row">
+    <div class="mx-auto mb-5">
+      <%= paginate @posts, theme: 'bootstrap-5' %>
+    </div>
   </div>
 </div>
