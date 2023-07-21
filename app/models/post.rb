@@ -7,6 +7,11 @@ class Post < ApplicationRecord
   has_many :post_comments,            dependent: :destroy
   has_many_attached :post_images
 
+  validates :title,       presence: true
+  validates :body,        presence: true,length:{maximum:200}
+  validates :post_images, presence: true
+
+
   def get_post_image(width, height)
     post_image.variant(resize_to_fill: [width, height]).processed
   end
