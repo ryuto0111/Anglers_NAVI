@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
-    <h5>投稿編集画面</h5>
     <div class="col-md-10">
+      <%= render 'layouts/error_messages', obj: @post %>
+      <h5>投稿編集画面</h5>
       <%= form_with model:@post, local:true do |f| %>
       <table class="table table-borderless">
         <tr class="field">

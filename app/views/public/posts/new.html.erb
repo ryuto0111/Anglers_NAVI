@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
-    <h5>新規投稿作成</h5>
     <div class="col-md-10">
+      <%= render 'layouts/error_messages', obj: @post %>
+      <h5>新規投稿作成</h5>
       <%= form_with model: @post, local:true do |f| %>
       <table class="table table-borderless">
         <tr class="field">
@@ -17,14 +18,17 @@
           <td><%= f.text_area :body, placeholder: "投稿内容を入力してください", class: "form-control" %></td>
         </tr>
         <tr class="form-group">
-          <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
-            <div class='form-check'>
-                <%= tag.label class: 'form-check-label' do %>
-                  <%= tag.check_box %>
-                  <%= tag.text %>
-                <% end %>
-            </div>
-          <% end %>
+          <td></td>
+          <td>
+            <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+              <div class='form-check'>
+                  <%= tag.label class: 'form-check-label' do %>
+                    <%= tag.check_box %>
+                    <%= tag.text %>
+                  <% end %>
+              </div>
+            <% end %>
+          </td>
         </tr>
         <tr>
           <td></td>
