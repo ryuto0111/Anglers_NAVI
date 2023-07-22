@@ -14,7 +14,7 @@
           </td>
         </tr>
         <tr>
-          <td id="favorite" >
+          <td id="favorite">
             <% if @post.user == current_user %>
               <%= link_to "削除", post_path(@post), method: :DELETE, class: "btn btn-danger" %>
             <% else %>

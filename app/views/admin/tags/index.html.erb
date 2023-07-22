@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
   <div class="col-md-6">
+    <%= render 'layouts/error_messages', obj: @tag %>
     <h4 class="mt-5">タグ一覧・追加</h4><br>
       <div class="form-group">
         <%= form_with model:@tag do |f| %>
