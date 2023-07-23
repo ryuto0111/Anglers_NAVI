@@ -4,39 +4,6 @@
     <div class="col-md-2">
       <%= render 'public/tagsearches/sidebar' %>
     </div>
-    <div class="col-md-8 d-flex flex-wrap mx-auto">
-        <h2 class="col-md-8">投稿一覧</h2>
-        <% @posts.each do |post| %>
-        <div class="card col-md-4 m-3 p-0">
-          <% if post.post_images.attached? %>
-            <%= link_to post_path(post) do %>
-              <%= image_tag post.post_images[0].variant(resize_to_fill: [241, 200]).processed, style: "height: 100%; width: 100%;" %>
-            <% end %>
-          <% end %>
-          <div class="card-content px-2 pt-2">
-            <h6><%= post.title %></h6>
-            <p style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><%= post.body %></p>
-            <p>
-              <% post.tags.each do |tag| %>
-                <%= link_to tagsearch_path(tag) do %>
-                  #<%= tag.name %>
-                <% end %>
-              <% end %>
-            </p>
-            <p>
-              <span><i class="fas fa-user"></i></span>
-              <%= link_to user_path(post.user) do %>
-                <span class="text-right"><%= post.user.name %></span>
-              <% end %>
-            </p>
-          </div>
-        </div>
-        <% end %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="mx-auto mb-5">
-      <%= paginate @posts, theme: 'bootstrap-5' %>
-    </div>
+    <%= render 'index', posts: @posts %>
   </div>
 </div>

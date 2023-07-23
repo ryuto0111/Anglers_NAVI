@@ -1,38 +1,9 @@
-<div class="container">
-  <h2><%= @tag.name %>(全<%= @posts.count %>件)</h2>
+<div class="container pb-5">
   <%= link_to "新規投稿", new_post_path  %>
-  <div class="row">
+  <div class="row mx-auto">
     <div class="col-md-2">
       <%= render 'public/tagsearches/sidebar' %>
     </div>
-    <% @posts.each do |post| %>
-    <div class="card mx-1 p-1">
-      <% if post.post_images.attached? %>
-        <%= link_to post_path(post) do %>
-          <%= image_tag post.post_images[0].variant(resize_to_fill: [200, 200]).processed %>
-        <% end %>
-      <% end %>
-      <h6 class="card-title"><%= post.title %></h6>
-      <p class="card-text"><%= post.body %></p>
-      <p>
-        <% post.tags.each do |tag| %>
-          <%= link_to tagsearch_path(tag) do %>
-            #<%= tag.name %>
-          <% end %>
-        <% end %>
-      </p>
-      <p>
-        <span><i class="fas fa-user"></i></span>
-        <%= link_to user_path(post.user) do %>
-          <span class="text-right"><%= post.user.name %></span>
-        <% end %>
-      </p>
-    </div>
-    <% end %>
-  </div>
-  <div class="row">
-    <div class="mx-auto mb-5">
-      <%= paginate @posts, theme: 'bootstrap-5' %>
-    </div>
+    <%= render 'public/posts/index', posts: @posts %>
   </div>
 </div>
