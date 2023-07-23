@@ -19,7 +19,11 @@ footer {
 }
 
 .sidebar {
-  background-color: #e0ffff;
+  background-color: #fafdff;
   border: 1px solid silver;
   border-radius: 5px;
+}
+
+.sidebar h4 {
+  background-color: #00afcc;
 }
