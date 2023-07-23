@@ -7,6 +7,19 @@ header, footer {
   background-color: rgba(40, 200, 244, 1);
 }
 
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
 .header-logo {
   filter: contrast(1.4);
+}
+
+.sidebar {
+  background-color: #e0ffff;
+  border: 1px solid silver;
+  border-radius: 5px;
 }
