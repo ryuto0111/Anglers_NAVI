@@ -15,20 +15,20 @@
     <div class="col-md-4 mx-auto">
       <table class="table my-5">
         <thead class="thead-light">
-          <tr>
-            <th><b>タグ</b></th>
-            <th></th>
-          </tr>
-          </thead>
-          <tbody>
-            <% @tags.each do |tag| %>
-              <tr>
-                <td><%= tag.name %></td>
-                <td><%= link_to "編集する", edit_admin_tag_path(tag.id), class:"btn btn-success form-control" %></td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+        <tr>
+          <th><b>タグ</b></th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+          <% @tags.each do |tag| %>
+            <tr>
+              <td><%= tag.name %></td>
+              <td><%= link_to "編集する", edit_admin_tag_path(tag.id), class:"btn btn-success form-control" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
