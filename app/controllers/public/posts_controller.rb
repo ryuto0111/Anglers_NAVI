@@ -52,6 +52,16 @@ class Public::PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  def search
+    @tags = Tag.where(params[:id])
+    if params[:keyword].present?
+      @posts = Post.where('body LIKE ?', "%#{params[:keyword]}%")
+      @keyword = params[:keyword]
+    else
+      @posts = Post.all
+    end
+  end
+
   private
 
   def post_params
