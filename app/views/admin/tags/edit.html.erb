@@ -3,9 +3,9 @@
     <div class="col-md-4 mx-auto">
       <%= render 'layouts/error_messages', obj: @tag %>
       <h4>タグ編集</h4>
-        <%= form_with model: @tag do |f| %>
+        <%= form_with url: admin_tag_path do |f| %>
           <div class="form">
-            <p><b>タグ</b></p>
+            <p>変更前：<%= @tag.name %></p>
             <%= f.text_field :name %>
             <%= f.submit '変更を保存', class:"btn btn-success" %>
           </div>
