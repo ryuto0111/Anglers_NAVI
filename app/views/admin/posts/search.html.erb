@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-md-2">
       <%= render 'public/tagsearches/sidebar', tags: @tags %>
-      <%= render 'admin/posts/search_form' %>
+      <%= render 'public/posts/search_form' %>
     </div>
     <div class="col-md-10">
       <div class="row">
@@ -27,16 +27,13 @@
               </p>
               <p>
                 <span><i class="fas fa-user"></i></span>
-                <%= link_to admin_user_path(post.user) do %>
+                <%= link_to user_path(post.user) do %>
                   <span class="text-right"><%= post.user.name %></span>
                 <% end %>
               </p>
             </div>
           </div>
           <% end %>
-          <div class="offset-4 mb-5">
-            <%= paginate @posts, theme: 'bootstrap-5' %>
-          </div>
         </div>
       </div>
     </div>

@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show, :edit, :update, :new, :create, :destroy] do
       resources :post_comments, only: [:create, :destroy]
       resource  :favorites,     only: [:create, :destroy]
+      collection do
+        get 'search'
+      end
     end
     resources :tagsearches, only: [:show]
 
@@ -39,6 +42,9 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :edit, :update]
     resources :posts, only: [:index, :show, :destroy] do
       resources  :post_comments, only: [:destroy]
+      collection do
+        get 'search'
+      end
     end
   end
 
