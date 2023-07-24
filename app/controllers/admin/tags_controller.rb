@@ -2,6 +2,7 @@ class Admin::TagsController < ApplicationController
 
   def index
     @tags = Tag.all
+    @tag = Tag.new
   end
 
   def create
@@ -14,11 +15,16 @@ class Admin::TagsController < ApplicationController
   end
 
   def edit
-
+    @tag = Tag.find(params[:id])
   end
 
   def update
-
+    @tag = Tag.find(params[:id])
+    if @tag.update
+      flash[:notice] = "情報が更新されました"
+    else
+      render :edit
+    end
   end
 
   private
