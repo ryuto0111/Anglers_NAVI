@@ -2,7 +2,7 @@
   <%= link_to "新規投稿", new_post_path  %>
   <div class="row mx-auto">
     <div class="col-md-2">
-      <%= render 'public/tagsearches/sidebar' %>
+      <%= render 'public/tagsearches/sidebar', tags: @tags %>
     </div>
     <%= render 'public/posts/index', posts: @posts %>
   </div>
