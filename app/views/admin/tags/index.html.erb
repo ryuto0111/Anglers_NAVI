@@ -4,7 +4,7 @@
       <%= render 'layouts/error_messages', obj: @tag %>
       <h4 class="text-center mt-5">タグ一覧・追加</h4><br>
       <div class="d-flex justify-content-center form-group">
-        <%= form_with url: admin_tags_path do |f| %>
+        <%= form_with model: [:admin, @tag] do |f| %>
           <%= f.text_field :name, placeholder: "タグ", class:"mr-3" %>
           <%= f.submit '新規登録', class:"btn btn-success" %>
         <% end %>
@@ -24,7 +24,7 @@
           <% @tags.each do |tag| %>
             <tr>
               <td><%= tag.name %></td>
-              <td><%= link_to "編集する", edit_admin_tag_path(tag.id), class:"btn btn-success form-control" %></td>
+              <td><%= link_to "編集する", edit_admin_tag_path(tag), class:"btn btn-success form-control" %></td>
             </tr>
           <% end %>
         </tbody>
