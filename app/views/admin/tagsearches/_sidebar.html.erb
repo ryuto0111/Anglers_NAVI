@@ -1,0 +1,8 @@
+<div class="sidebar text-center mt-2">
+  <h4 class="tag-heading">タグ一覧</h4>
+  <% tags.each do |tag| %>
+    <%= link_to admin_tagsearch_path(tag) do %>
+      <span class="tag-link"><%= tag.name %></span><br>
+    <% end %>
+  <% end %>
+</div>

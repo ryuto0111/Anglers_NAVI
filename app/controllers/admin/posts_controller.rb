@@ -18,4 +18,14 @@ class Admin::PostsController < ApplicationController
     redirect_to admin_posts_path
   end
 
+  def search
+    @tags = Tag.where(params[:id])
+    if params[:keyword].present?
+      @posts = Post.where('body LIKE ?', "%#{params[:keyword]}%")
+      @keyword = params[:keyword]
+    else
+      @posts = Post.all
+    end
+  end
+
 end
