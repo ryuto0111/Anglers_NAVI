@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   }
 
   devise_scope :user do
-    post "guest_sign_in", to: "public/sessions#guest_sign_in"
+    post "/users/guest_sign_in", to: "public/sessions#guest_sign_in"
   end
 
   # 管理者用
@@ -32,8 +32,8 @@ Rails.application.routes.draw do
     resources :rooms, only: [:create, :index, :show]
 
     resources :users, only: [:show, :edit, :update] do
-      patch '/quit' => 'users#quit'
       get '/confirm' => 'users#confirm'
+      patch '/quit' => 'users#quit'
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
