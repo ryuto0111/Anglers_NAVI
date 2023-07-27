@@ -2,7 +2,7 @@ class Public::PostsController < ApplicationController
   before_action :authenticate_user!, expect: [:index, :show]
 
   def index
-    @posts = Post.page(params[:page]).per(6)
+    @posts = Post.all.order(created_at: :desc).page(params[:page]).per(6)
     @tags = Tag.where(params[:id])
   end
 
