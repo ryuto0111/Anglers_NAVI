@@ -57,7 +57,7 @@
     <div class="card col-md-5 mx-auto mt-2 p-0">
       <% if post.post_images.attached? %>
         <%= link_to post_path(post) do %>
-          <%= image_tag post.post_images[0].variant(resize_to_fill: [241, 200]).processed, style: "height: 100%; width: 100%;" %>
+          <%= image_tag post.post_images[0].variant(resize_to_fill: [300, 300]).processed, style: "height: 100%; width: 100%;" %>
         <% end %>
       <% end %>
       <div class="card-content px-2 pt-2">

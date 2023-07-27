@@ -33,13 +33,15 @@
         <tr>
           <td>
             <% @post.tags.each do |tag| %>
-              <%= tag.name %>
+              <%= link_to admin_tagsearch_path(tag) do %>
+                <%= tag.name %>
+              <% end %>
             <% end %>
           </td>
         </tr>
       </table>
       <div id="comment_index">
-        <%= render '/admin/posts_comments/index', post: @post %>
+        <%= render '/admin/post_comments/index', post: @post %>
       </div>
     </div>
   </div>

@@ -1,4 +1,4 @@
-class Admin::PostsCommentsController < ApplicationController
+class Admin::PostCommentsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:post_id])
@@ -7,4 +7,5 @@ class Admin::PostsCommentsController < ApplicationController
     flash[:notice] = "コメントを削除しました。"
     redirect_to request.referer
   end
+
 end
