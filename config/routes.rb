@@ -32,8 +32,8 @@ Rails.application.routes.draw do
     resources :rooms, only: [:create, :index, :show]
 
     resources :users, only: [:show, :edit, :update] do
-      get '/confirm' => 'users#confirm'
       patch '/quit' => 'users#quit'
+      get '/confirm' => 'users#confirm'
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
