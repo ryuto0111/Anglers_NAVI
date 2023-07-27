@@ -20,14 +20,14 @@
               <p style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><%= post.body %></p>
               <p>
                 <% post.tags.each do |tag| %>
-                  <%= link_to tagsearch_path(tag) do %>
+                  <%= link_to admin_tagsearch_path(tag) do %>
                     #<%= tag.name %>
                   <% end %>
                 <% end %>
               </p>
               <p>
                 <span><i class="fas fa-user"></i></span>
-                <%= link_to user_path(post.user) do %>
+                <%= link_to admin_user_path(post.user) do %>
                   <span class="text-right"><%= post.user.name %></span>
                 <% end %>
               </p>
@@ -37,5 +37,8 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="offset-4 mb-5">
+    <%= paginate @posts, theme: 'bootstrap-5' %>
   </div>
 </div>

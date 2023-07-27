@@ -50,6 +50,7 @@ Rails.application.routes.draw do
         get 'search'
       end
     end
+    resources :tagsearches, only: [:show]
   end
 
 end

@@ -6,7 +6,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = User.find(params[:id]).page(params[:page]).per(10)
     @posts = @user.posts.order(created_at: :desc).page(params[:page]).per(6)
   end
 
