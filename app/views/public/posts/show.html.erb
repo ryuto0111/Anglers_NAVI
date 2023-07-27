@@ -4,15 +4,13 @@
       <%= render 'public/tagsearches/sidebar', tags: @index_tags %>
       <%= render 'public/posts/search_form' %>
     </div>
-    <div class="col-md-8 mx-auto">
+    <div class="col-md-10 mx-auto">
       <table class="table table-sm table-borderless">
         <tr>
           <td>
             <% if @post.post_images.attached? %>
               <% @post.post_images.each do |post_image| %>
-                <%= link_to post_path(@post) do %>
-                  <%= image_tag post_image.variant(resize_to_fill: [200, 200]).processed %>
-                <% end %>
+                <%= image_tag post_image, size: "200x200" %>
               <% end %>
             <% end %>
           </td>
