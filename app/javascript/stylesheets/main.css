@@ -1,0 +1,29 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+header, footer {
+  background-color: rgba(40, 200, 244, 1);
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+.header-logo {
+  filter: contrast(1.4);
+}
+
+.sidebar {
+  background-color: #fafdff;
+  border: 1px solid silver;
+  border-radius: 5px;
+}
+
+.sidebar h4 {
+  background-color: #00afcc;
+}

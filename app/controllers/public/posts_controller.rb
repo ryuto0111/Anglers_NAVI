@@ -2,12 +2,14 @@ class Public::PostsController < ApplicationController
   before_action :authenticate_user!, expect: [:index, :show]
 
   def index
-    @posts = Post.all
+    @posts = Post.all.order(created_at: :desc).page(params[:page]).per(6)
+    @tags = Tag.where(params[:id])
   end
 
   def show
     @post = Post.find(params[:id])
     @tags = Tag.pluck(:name, :id)
+    @index_tags = Tag.where(params[:id])
     @post_comment = PostComment.new
   end
 
@@ -49,6 +51,16 @@ class Public::PostsController < ApplicationController
     @post.destroy
     flash[:notice] = "投稿を削除しました。"
     redirect_to posts_path
+  end
+
+  def search
+    @tags = Tag.where(params[:id])
+    if params[:keyword].present?
+      @posts = Post.where('body LIKE ?', "%#{params[:keyword]}%")
+      @keyword = params[:keyword]
+    else
+      @posts = Post.all
+    end
   end
 
   private

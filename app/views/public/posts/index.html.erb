@@ -1,28 +1,13 @@
 <div class="container">
-  <h2>投稿一覧(全<%= @posts.count %>件)</h2>
-  <%= link_to "新規投稿", new_post_path  %>
+  <%= link_to "新規投稿作成", new_post_path, class: "btn btn-info btn-sm mx-auto" %>
   <div class="row">
-    <% @posts.each do |post| %>
-    <div class="card mx-1 p-1">
-      <% if post.post_images.attached? %>
-        <%= link_to post_path(post) do %>
-          <%= image_tag post.post_images[0].variant(resize_to_fill: [200, 200]).processed %>
-        <% end %>
-      <% end %>
-      <h6 class="cart-title"><%= post.title %></h6>
-      <p class="card-text"><%= post.body %></p>
-      <p>
-        <% post.tags.each do |tag| %>
-          #<%= tag.name %>
-        <% end %>
-      </p>
-      <p>
-        <b>投稿者</b>
-        <%= link_to user_path(post.user) do %>
-          <span class="text-right"><%= post.user.name %></span>
-        <% end %>
-      </p>
+    <div class="col-md-2">
+      <%= render 'public/tagsearches/sidebar', tags: @tags %>
+      <%= render 'public/posts/search_form' %>
     </div>
-    <% end %>
+    <%= render 'index', posts: @posts %>
+  </div>
+  <div class="offset-5 mb-5 py-3">
+    <%= paginate @posts, theme: 'bootstrap-5' %>
   </div>
 </div>

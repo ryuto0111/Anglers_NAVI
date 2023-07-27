@@ -1,48 +1,86 @@
 <div class="container">
   <div class="row py-3">
-    <h4 class="col-md-2">ユーザー情報</h4>
-    <% if @user == current_user %>
-      <%= link_to "編集する", edit_user_path, class:"btn btn-success btn-md" %>
-    <% else %>
-      <% if current_user.following?(@user) %>
-        <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete %>
-      <% else %>
-        <%= link_to "フォローする", user_relationships_path(@user.id), method: :post %>
-      <% end %>
-    <% end %>
+    <h4 class="col-md-2 offset-4">ユーザー情報</h4>
   </div>
-  <div>
-    <% unless @user.id == current_user.id %>
-      <% if (current_user.following? @user) && (@user.following? current_user)  %>
-        <% if @is_room == true %>
-          <p class="user-show-room"><a href="/rooms/<%= @room_id %>" class="btn btn-primary btn-lg">チャットへ</a>
+  <div class="row">
+    <div class="col-md-6 d-flex mx-auto justify-content-center">
+      <div class="user-profile_image">
+        <%= image_tag @user.get_profile_image, size: "80x80", class: "rounded-circle" %>
+      </div>
+      <div class="user-profile ml-2">
+        <h3 class="ml-3"><%= @user.name %></h3>
+        <P class="text-center">
+          <%= link_to user_followings_path(@user) do %>
+            フォロー<%= @user.followings.count %>
+          <% end %>
+          <%= link_to user_followers_path(@user) do %>
+            <span class="ml-2">フォロワー<%= @user.followers.count %></span>
+          <% end %>
+        </P>
+      </div>
+      <div class="align-middle ml-auto">
+        <% if @user == current_user %>
+          <%= link_to "編集する", edit_user_path, class:"btn btn-success btn-md" %>
         <% else %>
-          <%= form_for @room do |f| %>
-            <%= fields_for @entry do |e| %>
-              <%= e.hidden_field :user_id, value: @user.id %>
-            <% end %>
-            <%= f.submit "チャットを始める", class:"btn btn-primary btn-lg user-show-chat"%>
+          <% if current_user.following?(@user) %>
+            <%= link_to "フォロー中", user_relationships_path(@user.id), method: :delete, class: "btn btn-primary mb-1" %>
+          <% else %>
+            <%= link_to "フォロー", user_relationships_path(@user.id), method: :post, class: "btn btn-primary mb-1" %>
           <% end %>
         <% end %>
+
+        <% unless @user.id == current_user.id %>
+          <% if (current_user.following? @user) && (@user.following? current_user)  %>
+            <% if @is_room == true %>
+              <p class="user-show-room"><a href="/rooms/<%= @room_id %>" class="btn btn-success">チャット</a>
+            <% else %>
+              <%= form_for @room do |f| %>
+                <%= fields_for @entry do |e| %>
+                  <%= e.hidden_field :user_id, value: @user.id %>
+                <% end %>
+                <%= f.submit "チャットを始める", class:"btn btn-success"%>
+              <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row" style="min-height: 50px;">
+    <div class="col-md-6 offset-4">
+      <p class="m-0 p-0"><%= @user.introduction %></p>
+    </div>
+  </div>
+  <h4 class="col-md-3 mx-auto text-center bg-light">投稿一覧</h4>
+  <div class="row d-flex col-md-10 mx-auto">
+    <% @posts.each do |post| %>
+    <div class="card col-md-5 mx-auto mt-2 p-0">
+      <% if post.post_images.attached? %>
+        <%= link_to post_path(post) do %>
+          <%= image_tag post.post_images[0].variant(resize_to_fill: [300, 300]).processed, style: "height: 100%; width: 100%;" %>
+        <% end %>
       <% end %>
+      <div class="card-content px-2 pt-2">
+        <h6><%= post.title %></h6>
+        <p style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><%= post.body %></p>
+        <p>
+          <% post.tags.each do |tag| %>
+            <%= link_to tagsearch_path(tag) do %>
+              #<%= tag.name %>
+            <% end %>
+          <% end %>
+        </p>
+        <p>
+          <span><i class="fas fa-user"></i></span>
+          <span class="text-right"><%= post.user.name %></span>
+        </p>
+      </div>
+    </div>
     <% end %>
   </div>
   <div class="row">
-    <div class="col-md-8">
-      <table class="table table-bordered">
-        <tr>
-          <td class="col-md-3 bg-light">氏名</td>
-          <td><%= @user.name %></td>
-        </tr>
-        <tr>
-          <td class="bg-light">自己紹介</td>
-          <td><%= @user.introduction %></td>
-        </tr>
-        <tr>
-          <td class="bg-light">メールアドレス</td>
-          <td><%= @user.email %></td>
-        </tr>
-      </table>
+    <div class="mx-auto mt-2 mb-5">
+      <%= paginate @posts, theme: 'bootstrap-5' %>
     </div>
   </div>
 </div>

@@ -6,6 +6,10 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
 
+  devise_scope :user do
+    post "users/guest_sign_in", to: "public/sessions#guest_sign_in"
+  end
+
   # 管理者用
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
@@ -18,8 +22,11 @@ Rails.application.routes.draw do
     resources :posts, only: [:index, :show, :edit, :update, :new, :create, :destroy] do
       resources :post_comments, only: [:create, :destroy]
       resource  :favorites,     only: [:create, :destroy]
+      collection do
+        get 'search'
+      end
     end
-    resources :tags, only: [:show]
+    resources :tagsearches, only: [:show]
 
     resources :messages, only: [:create]
     resources :rooms, only: [:create, :index, :show]
@@ -35,8 +42,15 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '/' => 'homes#top'
-    resources :tags, only: [:index, :create, :edit, :update, :delete]
+    resources :tags, only: [:index, :create, :edit, :update, :destroy]
     resources :users, only: [:index, :show, :edit, :update]
+    resources :posts, only: [:index, :show, :edit, :update, :new, :create, :destroy] do
+      resources  :post_comments, only: [:destroy]
+      collection do
+        get 'search'
+      end
+    end
+    resources :tagsearches, only: [:show]
   end
 
 end

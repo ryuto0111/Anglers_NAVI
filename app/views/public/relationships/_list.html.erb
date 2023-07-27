@@ -1,0 +1,22 @@
+<% if users.exists? %>
+    <% users.each do |user| %>
+      <div class="col-md-6 d-flex align-items-center mx-auto m-3 p-3" style="border: 1px solid lightgray;">
+        <div class="profile-image flex-shrink-0" style="width: 20%;">
+      <%= link_to user_path(user) do %>
+          <%= image_tag user.get_profile_image, size:"80x80", class: "rounded-circle" %>
+        </div>
+        <div class="user-info flex-grow-1">
+          <h4 class="text-dark m-0"><%= user.name %></h4>
+          <p class="text-dark m-0 pl-2"><%= user.introduction %></p>
+      <% end %>
+        </div>
+        <div class="ralations flex-grow-1 col-3">
+          <p>フォロー: <%= user.followers.count %></p>
+          <p>フォロワー: <%= user.followings.count %></p>
+          <p>投稿数：<%= user.posts.count %></p>
+        </div>
+      </div>
+    <% end %>
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>

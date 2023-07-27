@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8">
-      <table class="table table-hover">
+    <div class="col-md-8 mx-auto">
+      <table class="table table-hover text-center border-bottom">
         <thead>
           <tr>
             <th>ユーザーID</th>
@@ -19,7 +19,7 @@
                   <%= user.name %>
                 <% end %>
               </td>
-              <td><% user.email %></td>
+              <td><%= user.email %></td>
               <td>
                 <% if user.is_deleted == false %>
                   <p>有効</p>
@@ -33,7 +33,7 @@
       </table>
       <div class="row">
         <div class="mx-auto">
-          <%= paginate @user %>
+          <%= paginate @user, theme: 'bootstrap-5' %>
         </div>
       </div>
     </div>

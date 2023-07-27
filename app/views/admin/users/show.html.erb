@@ -1,8 +1,8 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8 mx-auto">
+    <div class="col-md-6 mx-auto">
       <h2><%= @user.name %>さんの会員詳細</h2>
-      <table class="table table-borderless mt-3 mb-5">
+      <table class="table table-borderless table-sm mt-3 mb-5">
         <tr>
           <td>会員ID</td>
           <td><%= @user.id %></td>
@@ -40,6 +40,37 @@
           <td></td>
         </tr>
       </table>
+    </div>
+    <div class="col-md-10 d-flex flex-wrap mx-auto pl-3">
+      <% @posts.each do |post| %>
+      <div class="card col-md-5 mx-auto my-2 p-0">
+        <% if post.post_images.attached? %>
+          <%= link_to admin_post_path(post) do %>
+            <%= image_tag post.post_images[0].variant(resize_to_fill: [241, 200]).processed, style: "height: 100%; width: 100%;" %>
+          <% end %>
+        <% end %>
+        <div class="card-content px-2 pt-2">
+          <h6><%= post.title %></h6>
+          <p style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;"><%= post.body %></p>
+          <p>
+            <% post.tags.each do |tag| %>
+              <%= link_to tagsearch_path(tag) do %>
+                #<%= tag.name %>
+              <% end %>
+            <% end %>
+          </p>
+          <p>
+            <span><i class="fas fa-user"></i></span>
+            <span class="text-right"><%= post.user.name %></span>
+          </p>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="mt-2 mb-5 mx-auto">
+      <%= paginate @posts, theme: 'bootstrap-5' %>
     </div>
   </div>
 </div>

@@ -1,2 +1,36 @@
 ja:
   enums:
+
+  time:
+    formats:
+      default:            "%Y/%m/%d"
+      short:              "%m/%d"
+      time:               "%Y/%m/%d %H:%M:%S"
+
+  activerecord:
+    attributes:
+      user:
+        name:             "ユーザーネーム"
+        introduction:     "自己紹介"
+
+      post:
+        title:            "タイトル"
+        body:             "本文"
+        post_images:      "投稿画像"
+
+      post_comment:
+        comment_content:  "コメント"
+
+      tag:
+        neme:             "タグ名"
+
+      message:
+        body:             "メッセージ"
+
+  errors:
+      messages:
+        blank:            "を入力して下さい。"
+        invalid:          "は不正な値です。"
+        not_saved:        "正しく入力して下さい。"
+        not_a_number:     "は数字を入力して下さい。"
+        required:         "を入力してください。"

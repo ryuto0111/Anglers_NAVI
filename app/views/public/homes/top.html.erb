@@ -1,7 +1,11 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-8 mx-auto text-center">
       <h1>Anglers_NAVIへようこそ</h1>
+      <h5 class="mt-5">
+        ログインは<%= link_to "こちら",user_session_path %><br>
+        <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post %>
+        </h5>
     </div>
   </div>
 </div>

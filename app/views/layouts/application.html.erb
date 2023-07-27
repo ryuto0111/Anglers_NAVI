@@ -8,6 +8,7 @@
     <script src="https://kit.fontawesome.com/9fcdeca566.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="turbolinks-cache-control" content="no-preview"></meta>
   </head>
 
   <body>
@@ -18,7 +19,7 @@
     <div class="ml-5 mt-3 text-danger">
       <p class="alert"><%= alert %></p>
     </div>
-    <main style="height: 80vh;">
+    <main>
       <%= yield %>
     </main>
     <%= render 'layouts/footer' %>
