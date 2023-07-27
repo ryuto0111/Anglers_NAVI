@@ -8,8 +8,8 @@
         <%= image_tag @user.get_profile_image, size: "80x80", class: "rounded-circle" %>
       </div>
       <div class="user-profile ml-2">
-        <h3 class="offset-1"><%= @user.name %></h3>
-        <P>
+        <h3 class="ml-3"><%= @user.name %></h3>
+        <P class="text-center">
           <%= link_to user_followings_path(@user) do %>
             フォロー<%= @user.followings.count %>
           <% end %>
@@ -18,7 +18,7 @@
           <% end %>
         </P>
       </div>
-      <div class="align-middle offset-1">
+      <div class="align-middle ml-auto">
         <% if @user == current_user %>
           <%= link_to "編集する", edit_user_path, class:"btn btn-success btn-md" %>
         <% else %>
@@ -51,6 +51,7 @@
       <p class="m-0 p-0"><%= @user.introduction %></p>
     </div>
   </div>
+  <h4 class="col-md-3 mx-auto text-center bg-light">投稿一覧</h4>
   <div class="row d-flex col-md-10 mx-auto">
     <% @posts.each do |post| %>
     <div class="card col-md-5 mx-auto mt-2 p-0">
