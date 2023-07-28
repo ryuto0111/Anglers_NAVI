@@ -26,8 +26,8 @@
                 <% end %>
               </p>
               <p>
-                <span><i class="fas fa-user"></i></span>
                 <%= link_to admin_user_path(post.user) do %>
+                  <%= image_tag post_comment.user.get_profile_image, size: "30x30", class: "rounded-circle" %>
                   <span class="text-right"><%= post.user.name %></span>
                 <% end %>
               </p>
