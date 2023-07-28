@@ -15,8 +15,8 @@
           <td><%= f.text_field :introduction, class: "form-control" %></td>
           <td></td>
         </tr>
-          <td>メールアドレス</td>
-          <td><%= f.email_field :email, class: "form-control" %></td>
+          <td>プロフィール画像</td>
+          <td><%= f.file_field :profile_image, class: "form-control-file", accept: 'image/*' %></td>
           <td></td>
         </tr>
         <tr>
