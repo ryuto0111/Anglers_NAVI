@@ -22,7 +22,7 @@ class Admin::PostsController < ApplicationController
   def search
     @tags = Tag.where(params[:id])
     if params[:keyword].present?
-      @posts = Post.where('body LIKE ?', "%#{params[:keyword]}%")
+      @posts = Post.where('body LIKE ?', "%#{params[:keyword]}%").page(params[:page]).per(6)
       @keyword = params[:keyword]
     else
       @posts = Post.all
