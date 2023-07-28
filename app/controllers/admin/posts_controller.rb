@@ -8,6 +8,7 @@ class Admin::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @tags = Tag.pluck(:name, :id)
+    @index_tags = Tag.where(params[:id])
     @post_comment = PostComment.new
   end
 
